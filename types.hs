@@ -11,9 +11,4 @@ safetail2 xs
     | otherwise = tail xs
 safetail3 [] = []
 safetail3 xs = tail xs
-safetail4 
-    = \ xs ->
-      case xs of
-        [] -> []
-        (_ : xs) -> xs
 remove n xs = take n xs ++ drop (n + 1) xs
