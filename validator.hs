@@ -1,16 +1,20 @@
 module Validator where
 
 toDigits :: Integer -> [Integer]
-toDigits = undefined
-
+toDigits 0 = []
+toDigits n
+    | n < 0 = error "Negative number"
+    | otherwise = toDigits (n `div` 10) ++ [n `mod` 10]
+              
 toDigitsRev :: Integer -> [Integer]
-toDigitsRev = undefined
-
+toDigitsRev n = reverse (toDigits n)
+                
 doubleSecond :: [Integer] -> [Integer]
-doubleSecond = undefined
+doubleSecond (x:y:xs) = x : 2 * y : doubleSecond xs
+doubleSecond x = x
 
-sumDigits :: [Integer] -> Integer
-sumDigits = undefined
+--sumDigits :: [Integer] -> Integer
+sumDigits xs = map sum (map toDigits xs)
 
 isValid :: Integer -> Bool
 isValid = undefined
