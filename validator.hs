@@ -13,11 +13,13 @@ doubleSecond :: [Integer] -> [Integer]
 doubleSecond (x:y:xs) = x : 2 * y : doubleSecond xs
 doubleSecond x = x
 
---sumDigits :: [Integer] -> Integer
-sumDigits xs = map sum (map toDigits xs)
+sumDigits :: [Integer] -> Integer
+sumDigits xs = sum (map sum (map toDigits xs))
+
+checksum n = sumDigits (doubleSecond(toDigitsRev n))
 
 isValid :: Integer -> Bool
-isValid = undefined
+isValid n = checksum n `mod` 10 == 0
     
 numValid :: [Integer] -> Integer
 numValid xs = sum . map (\_ -> 1) $ filter isValid xs
